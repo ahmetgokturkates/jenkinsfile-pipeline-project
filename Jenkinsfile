@@ -3,10 +3,15 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo "Gokturk's python job"
-                sh "python --version"
-                sh "python pipeline.py"
+                echo 'Compiling the java source code'
+                sh 'javac Hello.java'
+            }
+        }
+        stage('run') {
+            steps {
+                echo 'Running the compiled java code.'
+                sh 'java Hello'
             }
         }
     }
-}
+} 
